@@ -1,7 +1,12 @@
-<%= form_for(@tasks) do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :details %>
-  <%= f.text_field :details %>
-  <%= f.submit %>
-<% end %>
+<div class="main-wrapper">
+  <h2 class="title-form">Crea una nueva tarea</h1>
+
+  <div class="container">
+    <%= simple_form_for (@task) do |f| %>
+      <%= f.input :title, input_html: { class: 'form-control'}  %>
+      <%= f.input :details, input_html: { class: 'form-control'}  %>
+      <%= f.submit "Submit a task", class: "btn btn-new" %>
+    <% end %>
+    <%= link_to "Go back", tasks_path, class:"btn btn-return btn-form" %>
+  </div>
+</div>

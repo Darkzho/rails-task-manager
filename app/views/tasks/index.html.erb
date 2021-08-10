@@ -1,8 +1,24 @@
-  <ul>
-    <% @tasks.each do |task| %>
-      <li><%= link_to task.title, task_path(task) %> <%= link_to "Delete", task_path(task), method: :delete, data: { confirm: "Estás seguro de borrar" } %>
-</li>
-    <% end %>
-  </ul>
+<div class="main-wrapper">
+  <h1 class="title-index">My tasks</h1>
 
-  <%= link_to "add a new task", new_task_path  %>
+  <div class="list-wrapper">
+    <ul>
+      <% @tasks.each do |task| %>
+        <li>
+          <% if task.completed %>
+            <i class="fa fa-check-square-o"></i>
+          <% else %>
+            <i class="fa fa-square-o"></i>
+          <% end %>
+          <%= link_to task.title, task_path(task), class: "vinculos" %>
+          <%= link_to task_path(task), class: "vinculos", method: :delete, data: { confirm: "Estás seguro de borrar" } do %>
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </li>  
+          <% end %>
+      <% end %>
+    </ul>
+  </div>
+  
+  <%= link_to "add a new task", new_task_path, class: "vinculos btn btn-new"  %> 
+</div>
+
